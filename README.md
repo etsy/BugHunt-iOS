@@ -1,6 +1,8 @@
 # Bug Hunt
 
-A drop-in module that allows for easy bug reporting.
+A drop-in module that allows for easy bug reporting. 
+
+**Meant for beta and internal usage. Future additions might include code not approved for the App Store.**
 
 <p align="center">
 <br />
@@ -11,7 +13,7 @@ A drop-in module that allows for easy bug reporting.
 
 To show the Bug Hunt overlay:
 
-```
+```objc
 [BugHunt showBugHunt];
 ```
 
@@ -19,14 +21,14 @@ To show the Bug Hunt overlay:
 
 To handle network events, create a class that conforms to the `EBHNetworkCommunicator` protocol and give an instance to the BugHunt module:
 
-```
+```objc
 MyNetworkCommunicator *networkCommunicator = [[MyNetworkCommunicator alloc] init];
 [BugHunt setNetworkCommunicator:networkCommunicator];
 ```
 
 Your network communicator is now responsible for responding to requests:
 
-```
+```objc
 - (BOOL)createBugHuntIssue:(EBHBugReport *)bugReport
                   completion:(EBHCreateNewIssueCompletionBlock)completionBlock
 {
@@ -43,24 +45,27 @@ Your network communicator is now responsible for responding to requests:
 
 ### CocoaPods (preferred)
 
-This is currently a private pod so you will need to add the ________ podspec repo to your list if you haven't already.
-
-Once that is done just add the following line to your podfile.
-
-```
-pod 'BugHunt', '~> 1.0'
+```ruby
+pod 'BugHunt', :git => 'https://github.com/etsy/BugHunt-iOS.git'
 ```
 
 ### Manual Installation
 
 1. Copy the `BugHunt` folder to your project.
-2. Download and copy the [MRProgress](https://github.com/mrackwitz/MRProgress) source files to the project.
+2. Copy over the source from MBProgressHUD and AFNetworking.
 
 ## Roadmap / Known Issues
 
+* Allow Bug Hunt to read in strings, parameters, etc from a config file.
 * Option for reducing screenshot size before sending.
 * Capture alert views.
 * Add support for more than 3 pictures.
-* Allow Bug Hunt to read in strings, parameters, etc from a config file.
 * Add rotation support.
 
+## Contributing
+
+Contributions welcome!
+
+1. Fork
+2. Make changes
+3. Add a test if you can
