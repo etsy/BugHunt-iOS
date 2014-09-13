@@ -1,6 +1,8 @@
-# Bug Hunt
+# Bug Hunt : gamified focused testing of your app
 
-A drop-in module that allows for easy bug reporting. 
+A drop-in module that allows for easy bug reporting, sending test cases to your users, and keeping track of number of bugs reported per users.
+
+Throughtout the development of your app, you may want some specific feedback on new features you added, or on bugs you fixed - BugHunt is here to help. By feeding test-scenarios to your users and keeping tab of the good karma points, you can achieve guided, focused testing of your app while making it a game to your (internal) users.
 
 **Meant for beta and internal usage. Future additions might include code not approved for the App Store.**
 
@@ -40,6 +42,36 @@ Your network communicator is now responsible for responding to requests:
     return YES;
 }
 ```
+
+#### Fetching test tasks
+
+You typically would feed the test scenarios from a backend system, such as your issue tracker.
+
+```objc
+- (BOOL)fetchBugHuntTasks:(EBHFetchTasksCompletionBlock)completionBlock
+{
+    // Perform request asynchronously and call the completion block
+    // when finished, with an array of EBHTask
+
+    // Let the caller know we are attempting to make the request so they
+    // can display a loading indicator, etc if they would like.
+    return YES;
+}
+
+#### Fetching leaderboard scores
+
+Leaderboard scores can be kept into your backend system as well - simply implement a way to retrieve the scores.
+
+```objc
+- (BOOL)fetchBugHuntLeaderboard:(EBHFetchLeaderboardCompletionBlock)completionBlock
+{
+    // Perform request asynchronously and call the completion block
+    // when finished, with an array of EBHLeaderboardUser
+
+    // Let the caller know we are attempting to make the request so they
+    // can display a loading indicator, etc if they would like.
+    return YES;
+}
 
 ## Installation
 
