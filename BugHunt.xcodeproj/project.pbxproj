@@ -44,7 +44,6 @@
 		78402A6F19BF8D8800768B7E /* TableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 78402A6519BF8D8800768B7E /* TableViewController.m */; };
 		787821A519C0C3630023C765 /* BugHuntTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 78402A7319BF8DC100768B7E /* BugHuntTests.m */; };
 		787821A619C0C3670023C765 /* InspectableBugHunt.m in Sources */ = {isa = PBXBuildFile; fileRef = 78402A7819BF8DC100768B7E /* InspectableBugHunt.m */; };
-		787821A719C0C36B0023C765 /* BugHuntTests-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 78402A7419BF8DC100768B7E /* BugHuntTests-Info.plist */; };
 		787821A819C0C36E0023C765 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 78402A7519BF8DC100768B7E /* InfoPlist.strings */; };
 		78F3FA091948D166001A2FFF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78F3FA081948D166001A2FFF /* Foundation.framework */; };
 		78F3FA0B1948D166001A2FFF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78F3FA0A1948D166001A2FFF /* CoreGraphics.framework */; };
@@ -61,7 +60,7 @@
 			containerPortal = 78F3F9FD1948D166001A2FFF /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 78F3FA041948D166001A2FFF;
-			remoteInfo = BugBountySample;
+			remoteInfo = BugHuntSample;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -143,8 +142,9 @@
 		78F3FA0C1948D166001A2FFF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		78F3FA291948D166001A2FFF /* BugHuntTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BugHuntTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		78F3FA2A1948D166001A2FFF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
-		78F3FAE3194A048C001A2FFF /* libBugBounty.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBugBounty.a; path = "../../../../Library/Developer/Xcode/DerivedData/BugBounty-anlqgqcdwuvetwgwlbnghbgwbtdl/Build/Products/Debug-iphoneos/libBugBounty.a"; sourceTree = "<group>"; };
-		8F66D610B49846BEB57BA371 /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
+		78F3FAE3194A048C001A2FFF /* libBugHunt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBugHunt.a; path = "../../../../Library/Developer/Xcode/DerivedData/BugHunt-anlqgqcdwuvetwgwlbnghbgwbtdl/Build/Products/Debug-iphoneos/libBugHunt.a"; sourceTree = "<group>"; };
+		C1CDF865D490888FE304B1D7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		DEA53B175A1FE0E4D2002210 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -415,7 +415,7 @@
 				78402A7219BF8DC100768B7E /* BugHuntSampleTests */,
 				78F3FA071948D166001A2FFF /* Frameworks */,
 				78F3FA061948D166001A2FFF /* Products */,
-				8F66D610B49846BEB57BA371 /* Pods.xcconfig */,
+				BBF45B30362E8B055724B900 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -431,7 +431,7 @@
 		78F3FA071948D166001A2FFF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				78F3FAE3194A048C001A2FFF /* libBugBounty.a */,
+				78F3FAE3194A048C001A2FFF /* libBugHunt.a */,
 				78F3FA081948D166001A2FFF /* Foundation.framework */,
 				78F3FA0A1948D166001A2FFF /* CoreGraphics.framework */,
 				78F3FA0C1948D166001A2FFF /* UIKit.framework */,
@@ -439,6 +439,15 @@
 				0AAC38577E84401EAA5D58BC /* libPods.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BBF45B30362E8B055724B900 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				DEA53B175A1FE0E4D2002210 /* Pods.debug.xcconfig */,
+				C1CDF865D490888FE304B1D7 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -459,7 +468,7 @@
 			dependencies = (
 			);
 			name = BugHunt;
-			productName = BugBountySample;
+			productName = BugHuntSample;
 			productReference = 78F3FA051948D166001A2FFF /* BugHunt.app */;
 			productType = "com.apple.product-type.application";
 		};
@@ -477,7 +486,7 @@
 				78F3FA2F1948D166001A2FFF /* PBXTargetDependency */,
 			);
 			name = BugHuntTests;
-			productName = BugBountySampleTests;
+			productName = BugHuntSampleTests;
 			productReference = 78F3FA291948D166001A2FFF /* BugHuntTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
@@ -488,7 +497,7 @@
 			isa = PBXProject;
 			attributes = {
 				CLASSPREFIX = EBB;
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0610;
 				ORGANIZATIONNAME = Etsy;
 				TargetAttributes = {
 					78F3FA281948D166001A2FFF = {
@@ -537,7 +546,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				787821A719C0C36B0023C765 /* BugHuntTests-Info.plist in Resources */,
 				787821A819C0C36E0023C765 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -557,7 +565,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F4EE1F15B5E64131AA16CCAC /* Check Pods Manifest.lock */ = {
@@ -733,7 +741,7 @@
 		};
 		78F3FA3B1948D166001A2FFF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8F66D610B49846BEB57BA371 /* Pods.xcconfig */;
+			baseConfigurationReference = DEA53B175A1FE0E4D2002210 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -750,7 +758,7 @@
 		};
 		78F3FA3C1948D166001A2FFF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8F66D610B49846BEB57BA371 /* Pods.xcconfig */;
+			baseConfigurationReference = C1CDF865D490888FE304B1D7 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -768,19 +776,19 @@
 		78F3FA3E1948D166001A2FFF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BugBountySample.app/BugBountySample";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BugHunt.app/BugHunt";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BugBountySample/BugBountySample-Prefix.pch";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "BugHuntSample/BugHunt-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = "BugBountySampleTests/BugHuntTests-Info.plist";
+				INFOPLIST_FILE = "BugHuntSampleTests/BugHuntTests-Info.plist";
 				PRODUCT_NAME = BugHuntTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
@@ -790,15 +798,15 @@
 		78F3FA3F1948D166001A2FFF /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BugBountySample.app/BugBountySample";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/BugHunt.app/BugHunt";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 				);
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BugBountySample/BugBountySample-Prefix.pch";
-				INFOPLIST_FILE = "BugBountySampleTests/BugHuntTests-Info.plist";
+				GCC_PRECOMPILE_PREFIX_HEADER = NO;
+				GCC_PREFIX_HEADER = "BugHuntSample/BugHunt-Prefix.pch";
+				INFOPLIST_FILE = "BugHuntSampleTests/BugHuntTests-Info.plist";
 				PRODUCT_NAME = BugHuntTests;
 				TEST_HOST = "$(BUNDLE_LOADER)";
 				WRAPPER_EXTENSION = xctest;
