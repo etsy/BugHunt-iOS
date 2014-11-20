@@ -10,6 +10,7 @@
 
 #import "EBHScreenshotUtility.h"
 #import "EBHNetworkManager.h"
+#import "EBHConfig.h"
 
 // Models
 #import "EBHBugReport.h"
@@ -28,6 +29,7 @@ static const NSUInteger MaxNumberOfScreenshotsAllowed = 3;
 @property (nonatomic, strong) UIBarButtonItem *submitBarButtonItem;
 @property (nonatomic, strong) EBHScreenshotDatasource *screenshotDatasource;
 @property (nonatomic, strong) EBHSubmitBugView *submitBugView;
+@property (nonatomic, strong) NSMutableDictionary *uiStrings;
 
 @end
 
@@ -40,6 +42,8 @@ static const NSUInteger MaxNumberOfScreenshotsAllowed = 3;
     self.submitBugView = [[EBHSubmitBugView alloc] init];
     self.submitBugView.delegate = self;
     self.view = self.submitBugView;
+    EBHConfig *ebhConfig = [EBHConfig sharedInstance];
+    self.uiStrings = ebhConfig.ebhConfig[@"UIStrings"];
 }
 
 - (void)viewDidLoad
@@ -57,7 +61,7 @@ static const NSUInteger MaxNumberOfScreenshotsAllowed = 3;
 - (void)setupNavigationItem
 {
     self.submitBarButtonItem = [[UIBarButtonItem alloc] init];
-    self.submitBarButtonItem.title = @"Submit";
+    self.submitBarButtonItem.title = self.uiStrings[@"SubmitButtonTitle"];
     self.submitBarButtonItem.target = self;
     self.submitBarButtonItem.action = @selector(submitBugReportWasTapped:);
     NSDictionary *textAttributes = @{NSFontAttributeName: [UIFont systemFontOfSize:14],
@@ -91,16 +95,19 @@ static const NSUInteger MaxNumberOfScreenshotsAllowed = 3;
 
 - (void)submitBugViewAddNewScreenshotWasTapped:(EBHSubmitBugView *)submitBugView
 {
+    NSString *errorAlertTitle = self.uiStrings[@"ImagePickerErrorAlertTitle"];
+    NSString *errorAlertContent = self.uiStrings[@"ImagePickerErrorAlertContent"];
+    NSString *errorAlertCancelButtonTitle = self.uiStrings[@"ErrorAlertCancelButtonTitle"];
     if ([UIImagePickerController isSourceTypeAvailable:UIImagePickerControllerSourceTypePhotoLibrary]) {
         UIImagePickerController *imagePickerController = [[UIImagePickerController alloc] init];
         imagePickerController.delegate = self;
         [self presentViewController:imagePickerController animated:YES completion:nil];
     }
     else {
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error"
-                                                        message:@"There is no photo library available on the current device."
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:errorAlertTitle
+                                                        message:errorAlertContent
                                                        delegate:nil
-                                              cancelButtonTitle:@"OK"
+                                              cancelButtonTitle:errorAlertCancelButtonTitle
                                               otherButtonTitles:nil];
         [alert show];
     }
@@ -114,28 +121,29 @@ static const NSUInteger MaxNumberOfScreenshotsAllowed = 3;
     NSString *errorTitle;
     NSString *errorMessage;
     
-    // TODO: Localize! This needs to be done elsewhere as well. See README. - Chris
     if (self.submitBugView.bugReportTextView.text.length == 0) {
         fieldsAreValid = NO;
-        errorTitle = @"Missing Description";
-        errorMessage = @"You'll need to add a description for the bug you are reporting.";
+        errorTitle = self.uiStrings[@"MissingDescriptionErrorTitle"];
+        errorMessage = self.uiStrings[@"MissingDescriptionErrorMessage"];
     }
     else if (self.screenshotDatasource.screenshots.count > MaxNumberOfScreenshotsAllowed) {
         fieldsAreValid = NO;
-        errorTitle = @"Too Many Screenshots";
-        errorMessage = [NSString stringWithFormat:@"Only %lx screenshots are allowed.", (unsigned long)MaxNumberOfScreenshotsAllowed];
+        errorTitle = self.uiStrings[@"TooManyScreenshotsErrorTitle"];
+        errorMessage = self.uiStrings[@"TooManyScreenshotsErrorMessageBeforeScreenshotLimit"];
+        errorMessage = [errorMessage stringByAppendingString:[NSString stringWithFormat:@" %lx ", (unsigned long) MaxNumberOfScreenshotsAllowed]];
+        errorMessage = [errorMessage stringByAppendingString:self.uiStrings[@"TooManyScreenshotsErrorMessageAfterScreenshotLimit"]];
     }
     else if (self.screenshotDatasource.screenshots.count < 1) {
         fieldsAreValid = NO;
-        errorTitle = @"Must include screenshots";
-        errorMessage = @"You must include at least one screenshot.";
+        errorTitle = self.uiStrings[@"NoScreenshotsErrorTitle"];
+        errorMessage = self.uiStrings[@"NoScreenshotsErrorMessage"];
     }
     
     if (fieldsAreValid == NO) {
         UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:errorTitle
                                                             message:errorMessage
                                                            delegate:nil
-                                                  cancelButtonTitle:@"OK"
+                                                  cancelButtonTitle:self.uiStrings[@"ErrorAlertCancelButtonTitle"]
                                                   otherButtonTitles:nil];
         [alertView show];
     }
@@ -159,9 +167,9 @@ static const NSUInteger MaxNumberOfScreenshotsAllowed = 3;
                 MBProgressHUD *hud = [MBProgressHUD HUDForView:self.navigationController.view];
                 hud.mode = MBProgressHUDModeText;
                 hud.labelFont = [UIFont systemFontOfSize:19];
-                hud.labelText = @"Success!\n\n";
+                hud.labelText = self.uiStrings[@"SubmissionSuccessTitle"];
                 hud.detailsLabelFont = [UIFont systemFontOfSize:17];
-                hud.detailsLabelText = @"Thanks a million for your help testing.";
+                hud.detailsLabelText = self.uiStrings[@"SubmissionSuccessMessage"];
                 
                 // Dismiss on tap
                 UITapGestureRecognizer *tapGesture = [[UITapGestureRecognizer alloc] initWithTarget:self.containerDelegate action:@selector(childViewControllerWantsToClose:)];
@@ -178,7 +186,7 @@ static const NSUInteger MaxNumberOfScreenshotsAllowed = 3;
             else {
                 MBProgressHUD *hud = [MBProgressHUD HUDForView:self.view];
                 hud.mode = MBProgressHUDModeText;
-                hud.labelText = @"Network error. Please try again.";
+                hud.labelText = self.uiStrings[@"NetworkErrorTitle"];
                 [hud hide:YES afterDelay:2.0];
             }
         };
@@ -191,7 +199,7 @@ static const NSUInteger MaxNumberOfScreenshotsAllowed = 3;
             MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.navigationController.view animated:YES];
             hud.mode = MBProgressHUDModeIndeterminate;
             hud.dimBackground = YES;
-            hud.labelText = @"Submitting";
+            hud.labelText = self.uiStrings[@"SubmittingTitle"];
         }
     }
 }

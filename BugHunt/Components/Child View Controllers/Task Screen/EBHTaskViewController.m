@@ -8,6 +8,7 @@
 
 #import "EBHTaskViewController.h"
 #import "EBHNetworkManager.h"
+#import "EBHConfig.h"
 
 // Models
 #import "EBHTask.h"
@@ -130,6 +131,9 @@ NSString * const kTaskViewCell = @"TaskViewCell";
 
 - (void)fetchTasks
 {
+    EBHConfig *ebhConfig = [EBHConfig sharedInstance];
+    NSMutableDictionary *uiStrings = ebhConfig.ebhConfig[@"UIStrings"];
+    
     BOOL willMakeRequest = [[EBHNetworkManager networkCommunicator] fetchBugHuntTasks:^(NSArray *tasks, NSError *error) {
         if (error == nil) {
             [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -140,7 +144,7 @@ NSString * const kTaskViewCell = @"TaskViewCell";
         else {
             MBProgressHUD *hud = [MBProgressHUD HUDForView:self.view];
             hud.mode = MBProgressHUDModeText;
-            hud.labelText = @"Network error. Please try again.";
+            hud.labelText = uiStrings[@"NetworkErrorTitle"];
             [hud hide:YES afterDelay:2.0];
         } 
     }];
@@ -148,7 +152,7 @@ NSString * const kTaskViewCell = @"TaskViewCell";
     if (willMakeRequest == YES) {
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.mode = MBProgressHUDModeIndeterminate;
-        hud.labelText = @"Requesting tasks";
+        hud.labelText = uiStrings[@"RequestingTasksTitle"];
     }
 }
 

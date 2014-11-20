@@ -8,6 +8,7 @@
 
 #import "EBHLeaderBoardViewController.h"
 #import "EBHNetworkManager.h"
+#import "EBHConfig.h"
 
 // Models
 #import "EBHLeaderboardUser.h"
@@ -107,6 +108,9 @@ NSString * const kLeaderboardCell = @"LeaderboardCell";
 
 - (void)fetchLeaderboard
 {
+    EBHConfig *ebhConfig = [EBHConfig sharedInstance];
+    NSMutableDictionary *uiStrings = ebhConfig.ebhConfig[@"UIStrings"];
+
     BOOL willMakeRequest = [[EBHNetworkManager networkCommunicator] fetchBugHuntLeaderboard:^(NSArray *leaderboardUsers, NSError *error) {
         if (error == nil) {
             [MBProgressHUD hideHUDForView:self.view animated:YES];
@@ -117,7 +121,7 @@ NSString * const kLeaderboardCell = @"LeaderboardCell";
         else {
             MBProgressHUD *hud = [MBProgressHUD HUDForView:self.view];
             hud.mode = MBProgressHUDModeText;
-            hud.labelText = @"Network error. Please try again.";
+            hud.labelText = uiStrings[@"NetworkErrorTitle"];
             [hud hide:YES afterDelay:2.0];
         }
     }];
@@ -125,7 +129,7 @@ NSString * const kLeaderboardCell = @"LeaderboardCell";
     if (willMakeRequest) {
         MBProgressHUD *hud = [MBProgressHUD showHUDAddedTo:self.view animated:YES];
         hud.mode = MBProgressHUDModeIndeterminate;
-        hud.labelText = @"Requesting leaderboard";
+        hud.labelText = uiStrings[@"RequestingLeaderboardTitle"];
     }
 }
 

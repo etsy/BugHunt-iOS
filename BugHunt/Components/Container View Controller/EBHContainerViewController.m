@@ -8,6 +8,7 @@
 
 #import "EBHContainerViewController.h"
 #import "UIColor+BugHunt.h"
+#import "EBHConfig.h"
 
 // View Controllers
 #import "EBHSubmitBugViewController.h"
@@ -64,7 +65,11 @@ NS_ENUM(NSUInteger, EBHNavigationItem) {
 - (void)setupNavigationItem
 {
     self.navigationController.navigationBar.barTintColor = [UIColor ebb_lightGreyColor];
-    self.title = @"Bug Hunt";
+
+    EBHConfig *ebhConfig = [EBHConfig sharedInstance];
+    NSMutableDictionary *uiStrings = ebhConfig.ebhConfig[@"UIStrings"];
+    self.title = uiStrings[@"BugHuntTitle"];
+    
     UIBarButtonItem *leftBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Cancel"
                                                                           style:UIBarButtonItemStylePlain
                                                                          target:self

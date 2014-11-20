@@ -8,6 +8,7 @@
 
 #import "EBHOverlayView.h"
 #import "EBHScreenshotUtility.h"
+#import "EBHConfig.h"
 
 static const CGFloat kOverlayResistanceDefault = 25.0;
 
@@ -50,8 +51,12 @@ static const CGFloat kOverlayResistanceDefault = 25.0;
     self.backgroundColor = [UIColor redColor];
     self.layer.cornerRadius = self.frame.size.height / 2.0f;
     
+    EBHConfig *ebhConfig = [EBHConfig sharedInstance];
+    NSMutableDictionary *imagePaths = ebhConfig.ebhConfig[@"ImagePaths"];
+    NSString *bugImagePath = imagePaths[@"BugImage"];
+    
     UIImageView *imageView = ({
-        UIImage *bugImage = [UIImage imageNamed:@"ebb_icon-bug"];
+        UIImage *bugImage = [UIImage imageNamed:bugImagePath];
         UIImageView *imageView = [[UIImageView alloc] initWithImage:bugImage];
         CGRect frame = self.frame;
         frame.origin.x = 0.0f;

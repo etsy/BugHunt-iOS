@@ -52,6 +52,8 @@
 		78F3FA2C1948D166001A2FFF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78F3FA081948D166001A2FFF /* Foundation.framework */; };
 		78F3FA2D1948D166001A2FFF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 78F3FA0C1948D166001A2FFF /* UIKit.framework */; };
 		A29FB0181E8D448BB460EF95 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 0AAC38577E84401EAA5D58BC /* libPods.a */; };
+		ED947D4F1A1D3C2200FB4227 /* EBHConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = ED947D4E1A1D3C2200FB4227 /* EBHConfig.m */; };
+		ED947D511A1E68D700FB4227 /* EBHConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = ED947D501A1E68D700FB4227 /* EBHConfig.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -145,6 +147,9 @@
 		78F3FAE3194A048C001A2FFF /* libBugHunt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libBugHunt.a; path = "../../../../Library/Developer/Xcode/DerivedData/BugHunt-anlqgqcdwuvetwgwlbnghbgwbtdl/Build/Products/Debug-iphoneos/libBugHunt.a"; sourceTree = "<group>"; };
 		C1CDF865D490888FE304B1D7 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		DEA53B175A1FE0E4D2002210 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		ED947D4D1A1D3C2200FB4227 /* EBHConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EBHConfig.h; sourceTree = "<group>"; };
+		ED947D4E1A1D3C2200FB4227 /* EBHConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EBHConfig.m; sourceTree = "<group>"; };
+		ED947D501A1E68D700FB4227 /* EBHConfig.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = EBHConfig.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -222,6 +227,9 @@
 			isa = PBXGroup;
 			children = (
 				78402A0519BF8D4900768B7E /* EBHBugReport.h */,
+				ED947D4D1A1D3C2200FB4227 /* EBHConfig.h */,
+				ED947D4E1A1D3C2200FB4227 /* EBHConfig.m */,
+				ED947D501A1E68D700FB4227 /* EBHConfig.plist */,
 				78402A0619BF8D4900768B7E /* EBHBugReport.m */,
 				78402A0719BF8D4900768B7E /* EBHTask.h */,
 				78402A0819BF8D4900768B7E /* EBHTask.m */,
@@ -530,6 +538,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				78402A4B19BF8D4900768B7E /* EBHTaskCell.xib in Resources */,
+				ED947D511A1E68D700FB4227 /* EBHConfig.plist in Resources */,
 				78402A5319BF8D4900768B7E /* ebb_icon_close_circle.png in Resources */,
 				78402A4319BF8D4900768B7E /* EBHLeaderboardCell.xib in Resources */,
 				78402A6B19BF8D8800768B7E /* Images.xcassets in Resources */,
@@ -615,6 +624,7 @@
 				78402A3F19BF8D4900768B7E /* EBHTask.m in Sources */,
 				78402A3A19BF8D4900768B7E /* BugHunt.m in Sources */,
 				78402A4F19BF8D4900768B7E /* EBHWindow.m in Sources */,
+				ED947D4F1A1D3C2200FB4227 /* EBHConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

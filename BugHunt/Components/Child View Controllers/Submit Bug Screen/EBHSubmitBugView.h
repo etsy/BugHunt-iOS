@@ -28,6 +28,7 @@
 @property (nonatomic, strong) UICollectionView *screenshotCollectionView;
 @property (nonatomic, strong) EBHButton *addNewScreenshotButton;
 @property (nonatomic, strong) EBHButton *howToScreenshotButton;
+@property (nonatomic, strong) NSMutableDictionary *uiStrings;
 
 @property (nonatomic, weak) id<EBHSubmitBugViewDelegate>delegate;
 

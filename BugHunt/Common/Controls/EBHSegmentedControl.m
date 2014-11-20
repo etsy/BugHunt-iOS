@@ -8,6 +8,7 @@
 
 #import "EBHSegmentedControl.h"
 #import "UIColor+BugHunt.h"
+#import "EBHConfig.h"
 
 @implementation EBHSegmentedControl
 
@@ -41,9 +42,12 @@
     [self setTitleTextAttributes:selectedAttributes forState:UIControlStateSelected];
 
     // Segments
-    [self insertSegmentWithTitle:@"New Bug" atIndex:0 animated:NO];
-    [self insertSegmentWithTitle:@"Tasks" atIndex:1 animated:NO];
-    [self insertSegmentWithTitle:@"Leaderboard" atIndex:2 animated:NO];
+    EBHConfig *ebhConfig = [EBHConfig sharedInstance];
+    NSMutableDictionary *uiStrings = ebhConfig.ebhConfig[@"UIStrings"];
+    
+    [self insertSegmentWithTitle:uiStrings[@"NewBugViewTitle"] atIndex:0 animated:NO];
+    [self insertSegmentWithTitle:uiStrings[@"TasksViewTitle"] atIndex:1 animated:NO];
+    [self insertSegmentWithTitle:uiStrings[@"LeaderboardViewTitle"] atIndex:2 animated:NO];
     self.selectedSegmentIndex = 0;
     
     [self setDividerImage:[self imageWithColor:[UIColor ebb_darkGreyColor]]

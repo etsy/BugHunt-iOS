@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ImagePaths</key>
+	<dict>
+		<key>BugImage</key>
+		<string>ebb_icon-bug</string>
+	</dict>
+	<key>UIStrings</key>
+	<dict>
+		<key>BugHuntTitle</key>
+		<string>Bug Hunt</string>
+		<key>RequestingLeaderboardTitle</key>
+		<string>Requesting leaderboard...</string>
+		<key>RequestingTasksTitle</key>
+		<string>Requesting tasks...</string>
+		<key>SubmittingTitle</key>
+		<string>Submitting...</string>
+		<key>NetworkErrorTitle</key>
+		<string>Network error. Please try again.</string>
+		<key>SubmissionSuccessMessage</key>
+		<string>Thanks a million for your help testing.</string>
+		<key>SubmissionSuccessTitle</key>
+		<string>Success!</string>
+		<key>NoScreenshotsErrorMessage</key>
+		<string>You must include at least one screenshot.</string>
+		<key>NoScreenshotsErrorTitle</key>
+		<string>Must include screenshots</string>
+		<key>TooManyScreenshotsErrorMessageAfterScreenshotLimit</key>
+		<string>screenshots are allowed.</string>
+		<key>TooManyScreenshotsErrorMessageBeforeScreenshotLimit</key>
+		<string>Only</string>
+		<key>TooManyScreenshotsErrorTitle</key>
+		<string>Too Many Screenshots</string>
+		<key>MissingDescriptionErrorMessage</key>
+		<string>You&apos;ll need to add a description for the bug you are reporting.</string>
+		<key>MissingDescriptionErrorTitle</key>
+		<string>Missing Description</string>
+		<key>ErrorAlertCancelButtonTitle</key>
+		<string>OK</string>
+		<key>ImagePickerErrorAlertContent</key>
+		<string>There is no photo library available on the current device.</string>
+		<key>ImagePickerErrorAlertTitle</key>
+		<string>Error</string>
+		<key>SubmitButtonTitle</key>
+		<string>Submit</string>
+		<key>LeaderboardViewTitle</key>
+		<string>Leaderboard</string>
+		<key>TasksViewTitle</key>
+		<string>Tasks</string>
+		<key>NewBugViewTitle</key>
+		<string>New Bug</string>
+		<key>ScreenshotHelpModalDismissButtonTitle</key>
+		<string>Got it!</string>
+		<key>ScreenshotHelpModalContent</key>
+		<string>To take a screenshot of the current screen double tap the Bug Hunt overlay. This will add the screenshot to your next Bug Report. You may add as many as necessary.</string>
+		<key>ScreenshotHelpModalTitle</key>
+		<string>Taking A Screenshot</string>
+		<key>ScreenshotHelpButtonTitle</key>
+		<string>Screenshot Help</string>
+		<key>AddScreenshotButtonTitle</key>
+		<string>Add Screenshot</string>
+		<key>DismissButtonLabel</key>
+		<string>Done</string>
+		<key>DescriptionPlaceholder</key>
+		<string>Please include steps to reproduce and other helpful information.</string>
+		<key>AddScreenshotsLabel</key>
+		<string>Add Screenshots</string>
+		<key>DescriptionFieldLabel</key>
+		<string>Description</string>
+	</dict>
+</dict>
+</plist>

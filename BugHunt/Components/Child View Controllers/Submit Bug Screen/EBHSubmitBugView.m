@@ -7,6 +7,7 @@
 //
 
 #import "EBHSubmitBugView.h"
+#import "EBHConfig.h"
 
 // Views
 #import "EBHButton.h"
@@ -28,6 +29,9 @@
         self.translatesAutoresizingMaskIntoConstraints = NO;
         self.backgroundColor = [UIColor whiteColor];
         
+        EBHConfig *myConfig = [EBHConfig sharedInstance];
+        self.uiStrings = myConfig.ebhConfig[@"UIStrings"];
+
         [self setupViews];
         [self setupConstraints];
     }
@@ -42,7 +46,7 @@
         label.translatesAutoresizingMaskIntoConstraints = NO;
         label.textColor = [UIColor darkGrayColor];
         label.font = [UIFont systemFontOfSize:16];
-        label.text = @"Description";
+        label.text = self.uiStrings[@"DescriptionFieldLabel"];
         [label sizeToFit];
         label;
     });
@@ -53,12 +57,13 @@
         label.translatesAutoresizingMaskIntoConstraints = NO;
         label.textColor = [UIColor darkGrayColor];
         label.font = [UIFont systemFontOfSize:16];
-        label.text = @"Add Screenshots";
+        label.text = self.uiStrings[@"AddScreenshotsLabel"];
         [label sizeToFit];
         label;
     });
     [self addSubview:self.addScreenshotLabel];
     
+    NSString *dismissButtonLabel = self.uiStrings[@"DismissButtonLabel"];
     self.bugReportTextView = ({
         EBH_SZTextView *textView = [[EBH_SZTextView alloc] init];
         textView.translatesAutoresizingMaskIntoConstraints = NO;
@@ -69,12 +74,12 @@
         textView.layer.borderColor = [UIColor lightGrayColor].CGColor;
         textView.textColor = [UIColor darkGrayColor];
         textView.font = [UIFont systemFontOfSize:14.0];
-        textView.placeholder = @"Please include steps to reproduce and other helpful information.";
+        textView.placeholder = self.uiStrings[@"DescriptionPlaceholder"];
         UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 40)];
         UIBarButtonItem *spacer = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
                                                                                 target:nil
                                                                                 action:nil];
-        UIBarButtonItem *dismissButton = [[UIBarButtonItem alloc] initWithTitle:@"Done"
+        UIBarButtonItem *dismissButton = [[UIBarButtonItem alloc] initWithTitle:dismissButtonLabel
                                                                           style:UIBarButtonItemStylePlain
                                                                          target:self
                                                                          action:@selector(dismissKeyboardButtonWasTapped:)];
@@ -110,14 +115,15 @@
     });
     [self addSubview:self.screenshotCollectionView];
     
+    NSString *addScreenshotButtonTitle = self.uiStrings[@"AddScreenshotButtonTitle"];
     self.addNewScreenshotButton= ({
         EBHButton *button = [[EBHButton alloc] init];
         button.translatesAutoresizingMaskIntoConstraints = NO;
         [button setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor darkGrayColor] forState:UIControlStateHighlighted];
         button.titleLabel.font = [UIFont systemFontOfSize:14];
-        [button setTitle:@"Add Screenshot" forState:UIControlStateNormal];
-        [button setTitle:@"Add Screenshot" forState:UIControlStateHighlighted];
+        [button setTitle:addScreenshotButtonTitle forState:UIControlStateNormal];
+        [button setTitle:addScreenshotButtonTitle forState:UIControlStateHighlighted];
         [button addTarget:self
                    action:@selector(addNewScreenshotButtonWasTapped:)
          forControlEvents:UIControlEventTouchUpInside];
@@ -125,14 +131,15 @@
     });
     [self addSubview:self.addNewScreenshotButton];
     
+    NSString *screenshotHelpButtonTitle = self.uiStrings[@"ScreenshotHelpButtonTitle"];
     self.howToScreenshotButton = ({
         EBHButton *button = [[EBHButton alloc] init];
         button.translatesAutoresizingMaskIntoConstraints = NO;
         [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateNormal];
         [button setTitleColor:[UIColor lightGrayColor] forState:UIControlStateHighlighted];
         button.titleLabel.font = [UIFont systemFontOfSize:14];
-        [button setTitle:@"Screenshot Help" forState:UIControlStateNormal];
-        [button setTitle:@"Screenshot Help" forState:UIControlStateHighlighted];
+        [button setTitle:screenshotHelpButtonTitle forState:UIControlStateNormal];
+        [button setTitle:screenshotHelpButtonTitle forState:UIControlStateHighlighted];
         [button addTarget:self
                    action:@selector(howToTakeAScreenShotWasTapped:)
          forControlEvents:UIControlEventTouchUpInside];
@@ -199,10 +206,14 @@
 
 - (void)howToTakeAScreenShotWasTapped:(id)sender
 {
-    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Taking A Screenshot"
-                                                    message:@"To take a screenshot of the current screen double tap the Bug Hunt overlay. This will add the screenshot to your next Bug Report. You may add as many as necessary."
+    NSString *screenshotHelpModalTitle = self.uiStrings[@"ScreenshotHelpModalTitle"];
+    NSString *screenshotHelpModalContent = self.uiStrings[@"ScreenshotHelpModalContent"];
+    NSString *screenshotHelpModalDismissButtonTitle = self.uiStrings[@"ScreenshotHelpModalDismissButtonTitle"];
+
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle:screenshotHelpModalTitle
+                                                    message:screenshotHelpModalContent
                                                    delegate:nil
-                                          cancelButtonTitle:@"Got it!"
+                                          cancelButtonTitle:screenshotHelpModalDismissButtonTitle
                                           otherButtonTitles:nil];
     [alert show];
 }
