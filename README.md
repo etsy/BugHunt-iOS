@@ -2,7 +2,7 @@
 
 A drop-in module that allows for easy bug reporting, sending test cases to your users, and keeping track of number of bugs reported per users.
 
-Throughtout the development of your app, you may want some specific feedback on new features you added, or on bugs you fixed - BugHunt is here to help. By feeding test-scenarios to your users and keeping tab of the good karma points, you can achieve guided, focused testing of your app while making it a game to your (internal) users.
+Throughout the development of your app, you may want some specific feedback on new features you added, or on bugs you fixed - BugHunt is here to help. By feeding test-scenarios to your users and keeping tab of the good karma points, you can achieve guided, focused testing of your app while making it a game to your (internal) users.
 
 **Meant for beta and internal usage. Future additions might include code not approved for the App Store.**
 
@@ -57,6 +57,7 @@ You typically would feed the test scenarios from a backend system, such as your 
     // can display a loading indicator, etc if they would like.
     return YES;
 }
+```
 
 #### Fetching leaderboard scores
 
@@ -72,6 +73,7 @@ Leaderboard scores can be kept into your backend system as well - simply impleme
     // can display a loading indicator, etc if they would like.
     return YES;
 }
+```
 
 ## Installation
 
