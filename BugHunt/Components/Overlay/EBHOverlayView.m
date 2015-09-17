@@ -51,7 +51,11 @@ static const CGFloat kOverlayResistanceDefault = 25.0;
     self.layer.cornerRadius = self.frame.size.height / 2.0f;
     
     UIImageView *imageView = ({
-        UIImage *bugImage = [UIImage imageNamed:@"ebb_icon-bug"];
+        
+        NSBundle *bundle = [NSBundle bundleForClass:[self class]];
+        NSString *imagePath = [bundle pathForResource:@"ebb_icon-bug" ofType:@"png"];
+        UIImage *bugImage = [UIImage imageWithContentsOfFile:imagePath];
+        
         UIImageView *imageView = [[UIImageView alloc] initWithImage:bugImage];
         CGRect frame = self.frame;
         frame.origin.x = 0.0f;
