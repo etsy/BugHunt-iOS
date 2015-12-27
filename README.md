@@ -1,5 +1,7 @@
 # Bug Hunt : gamified focused testing of your app
 
+[![Join the chat at https://gitter.im/etsy/BugHunt-iOS](https://badges.gitter.im/etsy/BugHunt-iOS.svg)](https://gitter.im/etsy/BugHunt-iOS?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+
 A drop-in module that allows for easy bug reporting, sending test cases to your users, and keeping track of number of bugs reported per users.
 
 Throughout the development of your app, you may want some specific feedback on new features you added, or on bugs you fixed - BugHunt is here to help. By feeding test-scenarios to your users and keeping tab of the good karma points, you can achieve guided, focused testing of your app while making it a game to your (internal) users.
