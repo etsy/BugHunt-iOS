@@ -97,7 +97,7 @@ static const CGFloat kOverlayResistanceDefault = 25.0;
     
     // Collisions
     UICollisionBehavior *collisionBehavior = [[UICollisionBehavior alloc] initWithItems:@[self]];
-    [collisionBehavior setTranslatesReferenceBoundsIntoBoundaryWithInsets:UIEdgeInsetsMake(-10, -10, -10, -10)];
+    [collisionBehavior setTranslatesReferenceBoundsIntoBoundaryWithInsets:UIEdgeInsetsMake(30, -10, 20, -10)];
     [self.dynamicAnimator addBehavior:collisionBehavior];
 
     // Make it springy!
